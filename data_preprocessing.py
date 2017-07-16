@@ -1,15 +1,11 @@
 from __future__ import division
 
 import math
-import os
-from glob import glob
 
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 from sklearn import mixture
-
 
 
 def get_image_data(fname):
@@ -76,8 +72,9 @@ def maxRect(img):
             if area[0] > maxArea[0]:
                 maxArea = area + (r,)
     return (
-    int(maxArea[3] + 1 - maxArea[0] / abs(maxArea[1] - maxArea[2])), maxArea[2],
-    maxArea[3], maxArea[1], maxArea[0])
+        int(maxArea[3] + 1 - maxArea[0] / abs(maxArea[1] - maxArea[2])),
+        maxArea[2],
+        maxArea[3], maxArea[1], maxArea[0])
 
 
 def cropCircle(img, cut):
@@ -144,7 +141,6 @@ def preprocess_one_image(fname, tile_size=None, tile_size_final=(224, 224)):
     :return: cropped image array
     """
 
-
     img = get_image_data(fname)
     if tile_size is not None:
         img = cv2.resize(img, dsize=tile_size)
@@ -179,7 +175,7 @@ def preprocess_one_image(fname, tile_size=None, tile_size_final=(224, 224)):
                                            cv2.CHAIN_APPROX_NONE)
 
     main_contour = \
-    sorted(contours_mask, key=cv2.contourArea, reverse=True)[0]
+        sorted(contours_mask, key=cv2.contourArea, reverse=True)[0]
 
     x, y, w, h = cv2.boundingRect(main_contour)
 

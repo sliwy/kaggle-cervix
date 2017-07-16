@@ -21,11 +21,15 @@ type_2_ids = []
 type_3_ids = []
 
 type_1_files = glob(os.path.join(TRAIN_DATA, "Type_1", "*.jpg"))
-type_1_ids = np.array([s[len(os.path.join(TRAIN_DATA, "Type_1"))+1:-4] for s in type_1_files])
+type_1_ids = np.array(
+    [s[len(os.path.join(TRAIN_DATA, "Type_1")) + 1:-4] for s in type_1_files])
 type_2_files = glob(os.path.join(TRAIN_DATA, "Type_2", "*.jpg"))
-type_2_ids = np.array([s[len(os.path.join(TRAIN_DATA, "Type_2"))+1:-4] for s in type_2_files])
+type_2_ids = np.array(
+    [s[len(os.path.join(TRAIN_DATA, "Type_2")) + 1:-4] for s in type_2_files])
 type_3_files = glob(os.path.join(TRAIN_DATA, "Type_3", "*.jpg"))
-type_3_ids = np.array([s[len(os.path.join(TRAIN_DATA, "Type_3"))+1:-4] for s in type_3_files])[100:]
+type_3_ids = np.array(
+    [s[len(os.path.join(TRAIN_DATA, "Type_3")) + 1:-4] for s in type_3_files])[
+             100:]
 
 test_files = glob(os.path.join(TEST_DATA, "*.jpg"))
 test_ids = np.array([s[len(TEST_DATA) + 1:-4] for s in test_files])
@@ -67,7 +71,7 @@ def train_data(type_1_ids, type_2_ids, type_3_ids):
             print counter, '/', m
 
             complete_cut.append(preprocess_one_image(
-                get_filename(image_id, 'Type_%i' % (k+1))))
+                get_filename(image_id, 'Type_%i' % (k + 1))))
 
         complete_cuts.append(complete_cut)
 
@@ -76,12 +80,14 @@ def train_data(type_1_ids, type_2_ids, type_3_ids):
     complete_cuts[2] = np.array(complete_cuts[2], dtype=np.float32)
 
     X_train_cut = complete_cuts[2]
-    X_train_cut = np.concatenate((X_train_cut,complete_cuts[1],complete_cuts[2]), axis=0)
+    X_train_cut = np.concatenate(
+        (X_train_cut, complete_cuts[1], complete_cuts[2]), axis=0)
 
-    y_train_cut = np.concatenate((np.ones(complete_cuts[0].shape[0], dtype=np.int32),
-                          np.full(complete_cuts[1].shape[0], 2, dtype=np.int32),
-                          np.full(complete_cuts[2].shape[0], 3, dtype=np.int32)
-                         ))
+    y_train_cut = np.concatenate(
+        (np.ones(complete_cuts[0].shape[0], dtype=np.int32),
+         np.full(complete_cuts[1].shape[0], 2, dtype=np.int32),
+         np.full(complete_cuts[2].shape[0], 3, dtype=np.int32)
+         ))
     y_train_cut = y_train_cut - 1
     pd.to_pickle(X_train_cut, 'X_train_cut.pkl')
     pd.to_pickle(y_train_cut, 'y_train_cut.pkl')
@@ -96,7 +102,6 @@ def test_data(test_files, test_ids):
         count += 1
         image_id = test_ids[i]
 
-
         complete_cuts.append(preprocess_one_image(
             get_filename(image_id, 'Test')))
 
@@ -105,7 +110,6 @@ def test_data(test_files, test_ids):
 
     pd.to_pickle(X_test_cut, 'X_test_cut.pkl')
     pd.to_pickle(X_test_file_name_cut, 'X_test_file_name_cut.pkl')
-
 
 
 if __name__ == "__main__":
