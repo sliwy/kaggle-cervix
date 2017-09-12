@@ -60,12 +60,28 @@ def train_model(model, batch_size, num_classes, epochs, data_augmentation,
         return keras.models.load_model(model_name), datagen
 
 
+def example_model():
+    base_model = InceptionV3(include_top=False, weights='imagenet',
+                             input_tensor=None,
+                             input_shape=(224, 224, 3), classes=3)
+    x = base_model.output
+    x = Conv2D(512, (3, 3))(x)
+    x = GlobalMaxPooling2D()(x)
+    x = Dense(512, activation='relu')(x)
+    x = Dropout(0.25)(x)
+    predictions = Dense(3, activation='softmax')(x)
+
+    # this is the model we will train
+    model = Model(inputs=base_model.input, outputs=predictions)
+    return model
+
 def test_augmentation(model, datagen, X, n_iter=50):
     pred = []
     print('Predictions are being computed...')
     for _ in range(n_iter):
-        pred.append(model.predict_generator(datagen.flow(X, shuffle=False),
-                                            X.shape[0] / 32, pickle_safe=True))
+        pred.append(model.predict_generator(datagen.flow(X, batch_size=1,
+                                                         shuffle=False),
+                                            X.shape[0], pickle_safe=True))
     return np.array(pred).mean(axis=0)
 
 
