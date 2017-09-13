@@ -1,8 +1,8 @@
-45th solution for Intel & MobileODT Cervical Cancer Screening challenge
+# 45th solution for Intel & MobileODT Cervical Cancer Screening challenge
 
 In the competition that was organized by kaggle.com the task was to develop an algorithm which accurately identifies a woman’s cervix type based on images.
 
-In this repository we presented what we were able to do. Placed scripts contain information about data processing and our learning neural network. 
+In this repository we presented what we were able to do. Placed scripts contain information about data preprocessing and deep neural nets. 
 
 Finally, we took 45th (of 848) position on the leaderboard.
 
