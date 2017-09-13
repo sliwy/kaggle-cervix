@@ -10,4 +10,4 @@ More information and data can be found here: https://www.kaggle.com/c/intel-mobi
 
 In this competition, during the team student project,students of the Faculty of Physics of the University of Warsaw: Miłosz Danilczuk, Maciej Śliwowski and Mateusz Szwerbel took part.
 
-The caretaker of the project was Dr hab. Jarosław Żygierewicz.
+The caretaker of the project was Ph.D. Jarosław Żygierewicz.
