@@ -1,4 +1,4 @@
-#45th solution for Intel & MobileODT Cervical Cancer Screening challenge
+45th solution for Intel & MobileODT Cervical Cancer Screening challenge
 
 In the competition that was organized by kaggle.com the task was to develop an algorithm which accurately identifies a woman’s cervix type based on images.
 
