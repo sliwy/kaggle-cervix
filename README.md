@@ -6,8 +6,8 @@ In this repository we presented what we were able to do. Placed scripts contain 
 
 Finally, we took 45th (of 848) position on the leaderboard.
 
-More information and data can be found here: https://www.kaggle.com/c/intel-mobileodt-cervical-cancer-screening.
+More information and data can be found here: [Challenge on kaggle](https://www.kaggle.com/c/intel-mobileodt-cervical-cancer-screening).
 
-In this competition, during the team student project,students of the Faculty of Physics of the University of Warsaw: Miłosz Danilczuk, Maciej Śliwowski and Mateusz Szwerbel took part.
+In this competition, during the team student project, students of the Faculty of Physics of the University of Warsaw: Miłosz Danilczuk, Maciej Śliwowski and Mateusz Szwerbel took part.
 
 The caretaker of the project was Ph.D. Jarosław Żygierewicz.
